@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<div class="archive-page">
+
+    <h1 class="archive-title">Game Archive</h1>
+    <h2 class="archive-caption">Play previous days' Statline. If user is logged in, stats will be saved on completition.</h2>
+
+    <div class="archive-container">
+
+        {% for i in range(days, 0, -2) %}
+
+            <div class="archive-row">
+
+                <!-- LEFT (newer day) -->
+                <a class="archive-button" href="/archive/game?day={{ i }}">
+                    Day {{ i }}
+                </a>
+
+                <!-- RIGHT (older day) -->
+                {% if i - 1 > 0 %}
+                <a class="archive-button secondary" href="/archive/game?day={{ i - 1 }}">
+                    Day {{ i - 1 }}
+                </a>
+                {% endif %}
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

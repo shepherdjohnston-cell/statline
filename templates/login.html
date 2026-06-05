@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <div class="auth-page">
+        <div class="auth-card">
+            <h2 class="auth-title">Welcome Back</h2>
+
+            {% if error %}
+                <div class="auth-alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <form method="POST" action="/login" class="auth-form">
+
+                <div class="auth-field">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+
+                <div class="auth-field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <button type="submit" class="auth-btn-primary">Login</button>
+
+                <div class="auth-divider">or</div>
+
+                <a href="/signup" class="auth-btn-secondary">Create Account</a>
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

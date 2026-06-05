@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <div class="auth-page">
+        <!-- Left Benefit -->
+        <div class="benefit-side">
+            <div class="benefit-icon">💾</div>
+            <h4>Saved Games</h4>
+            <p>Game completion is saved. Completion saved within navigable archive.</p>
+        </div>
+        
+        
+        <div class="auth-card">
+
+            {% if error %}
+                <div class="auth-alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+                    
+
+            <form method="POST" action="/signup" class="auth-form">
+
+                <div class="auth-field">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+
+                <div class="auth-field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <div class="auth-field">
+                    <label for="password">Confirm Password</label>
+                    <input type="password" id="password" name="confirm_password" required>
+                </div>
+
+                <button type="submit" class="auth-btn-primary">Signup</button>
+
+                <div class="auth-divider">or</div>
+
+                <a href="/login" class="auth-btn-secondary">Login</a>
+
+            </form>
+        </div>
+        
+        <!-- Right Benefit -->
+        <div class="benefit-side">
+            <div class="benefit-icon">📊</div>
+            <h4>Player Stats</h4>
+            <p>Track stats across all games played.</p>
+        </div>
+
+    </div>
+
+{% endblock %}

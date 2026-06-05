@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <script>
+        const gameDay = {{ day }};
+    </script>
+
+
+    <div class="guess-counter">
+        <div class="stat-label">Guess</div>
+        <div class="stat-number" id="guess-counter">1/6</div>
+    </div>
+
+    <h2 class="game-headers">Game Statline</h2>
+
+    <div class="stats-table-wrapper">
+        <table class="stats-table grid-table">
+            <thead>
+                <tr>
+                    <th>PTS</th><th>REB</th><th>AST</th><th>STL</th><th>BLK</th>
+                    <th>TO</th><th>FG</th><th>3P</th><th>FT</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for stat in stats %}
+                        <th>{{ stat }}</th>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+
+
+    <!--Hints-->
+    <h2 class="game-headers">Hints</h2>
+
+    {% set ns = namespace(count=1) %}
+    <div class="boxes-wrapper">
+        {% for clue in clues %}
+            <div class="info-box" data-revealcount="{{ ns.count }}">
+                <!-- Top/middle texts -->
+                <div class="top-text">
+                    <div class="clue-label">{{ clue }}</div>
+                    {% if ns.count == 1 %}
+                        <div class="reveal-text">Click to reveal after {{ ns.count }} more guess</div>
+                    {% else %}
+                        <div class="reveal-text">Click to reveal after {{ ns.count }} more guesses</div>
+                    {% endif %}
+                </div>
+
+                <!-- Hidden clue text -->
+                <span class="clue-text">{{ clue }}: {{ clues[clue] }}</span>
+            </div>
+            {% set ns.count = ns.count + 1 %}
+        {% endfor %}
+    </div>
+
+
+    <!--Win Popup-->
+    <div class="modal fade" id="gameOverModal" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="gameOverMessage">Congratulations!</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div id="stats-container" class="stats-container">
+
+                        <div class="stat">
+                            <div class="stat-number" id="guesses"></div>
+                            <div class="stat-label">Guesses</div>
+                        </div>
+
+                        <div class="stat">
+                            <div class="stat-number" id="hintsUsed"></div>
+                            <div class="stat-label">Hints Used</div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="autocomplete">
+        <div style="display: flex; gap: 6px;">
+            <input autocomplete="off" id="guessPlayer" style="width: 250px;" class="form-control" placeholder="enter player name">
+            <button type="button" id="guess" style="background-color:#0d2543; border-color: #0d2543;" class="btn btn-primary">Guess</button>
+        </div>
+        <div id="autocomplete-list" class="autocomplete-list"></div>
+    </div>
+
+    <div id="guess_alert" class="alert alert-primary hidden" role="alert">
+        <strong>Invalid guess</strong>
+        <button id="alert_close" type="button" class="btn-close" aria-label="Close"></button>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+
+
+
+
+{% endblock %}

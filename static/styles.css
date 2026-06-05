@@ -1,0 +1,786 @@
+.dropdown-toggle::after {
+    display: none !important;
+    float: right !important;
+}
+
+.dropdown-item {
+    color: #0d2543 !important;
+    font-weight: bold;
+}
+
+.navbar{
+    background-color: #f5ead7 !important;
+}
+
+.navbar-brand {
+    transform: translateX(-185%) !important;
+    font-weight: bold !important;
+    font-size: 24px !important;
+    z-index: 10 !important;
+}
+
+.navbar-collapse {
+    transform: translateX(-40%) !important;
+}
+
+/*Old footer color: #ddc099;*/
+footer {
+    background-color: #f5ead7;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+main {
+    flex: 1;
+}
+
+p {
+    font-size: 14px;
+    color: #222222;
+}
+
+
+.brand {
+    color: #000000;
+    font-size: 24px;
+}
+
+
+
+/* --- WRAPPER (card-style container) --- */
+.stats-table-wrapper {
+    width: 25%;
+    margin: 0.5rem auto;
+    background: #ffffff;
+    padding: 18px 22px;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* --- TABLE: full grid look --- */
+.grid-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-weight: bold;
+    text-align: center;
+    color: #0d2543;
+    border-radius: 4px;
+    overflow: hidden;
+    table-layout: auto;
+}
+
+/* --- Header row --- */
+.grid-table thead th {
+    background: #0d2543;
+    color: white;
+    padding: 14px 0;
+    font-size: 16px;
+    border: 2px solid #0d2543;
+
+}
+
+/* --- Body cells (white grid squares) --- */
+.grid-table tbody th {
+    min-width: 60px;
+    background: #f5ead7; /* soft tan, matches modal cards */
+    padding: 16px 0;
+    font-size: 20px;
+    border: 2px solid #0d2543; /* makes the grid visible */
+}
+
+/* --- Optional hover effect for cells --- */
+.grid-table tbody th:hover {
+    background: #f0dcc1;
+}
+
+
+
+
+
+/* --- GAME QUESTION TITLE --- */
+.game-headers {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 800;
+    color: #0d2543;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+
+
+
+
+/* Wrapper to stack boxes vertically and center them horizontally */
+.boxes-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 1rem;
+}
+
+/* Each box */
+.info-box {
+    width: 475px;
+    height: 100px;
+    background-color: #a8a39a;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    color: #333;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+}
+
+/* Top and middle texts */
+.top-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 2;
+}
+
+.reveal-text {
+    font-style: italic;
+    font-size: 14px;
+}
+
+.clue-label {
+    font-size: 24px;
+}
+/* Reveal statement and clue label */
+.reveal-text,
+.clue-label {
+    margin: 2px 0;
+}
+
+/* Hidden clue text in the direct center of the box */
+.clue-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #a8a39a; /* same as box bg initially hidden */
+    font-size: 1.2rem;
+    font-weight: bold;
+    z-index: 1;
+    transition: color 0.3s;
+}
+
+/* Reveal state */
+.info-box.reveal {
+    background-color: #f5ead7;
+}
+
+.info-box.reveal .reveal-text,
+.info-box.reveal .clue-label {
+    visibility: hidden;
+}
+
+.info-box.reveal .clue-text {
+    color: #333; /* visible on top */
+}
+
+
+
+
+.autocomplete {
+    position: relative;
+    margin: 0 auto;
+    margin-top: 3rem;
+    width: fit-content;
+}
+
+.autocomplete-list {
+    top: calc(100% + 4px);
+    padding-left: 12px; /*Matches Input field*/
+    border-radius: 6px;
+    background: white;
+    position: absolute;
+    width: 250px;
+    overflow-y: auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.autocomplete-item {
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.autocomplete-item:hover {
+    background: #efefef
+}
+
+/* Shake animation */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.3s ease, flash 0.3s ease;
+}
+
+@keyframes flash {
+  0%, 100% { border-color: red; }
+  50% { border-color: darkred; }
+}
+
+.form-control {
+    border: 2px solid #0d2543;
+}
+
+
+
+/* ---- MODAL OVERALL STYLE ---- */
+
+.modal-content {
+  border-radius: 20px;
+  border: none;
+  padding-bottom: 20px;
+  background: #ffffff;
+
+  /* soft depth */
+  box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+}
+
+/* Top bar / header */
+.modal-header {
+  border-bottom: none;
+  padding: 25px 25px 10px 25px;
+
+  /* optional subtle gradient */
+  background: #0d2543;
+  color: white;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+/* Title styling */
+.modal-title {
+  font-size: 28px !important;
+  font-weight: 800;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+/* Close button style override for dark header */
+.modal-header .btn-close {
+  filter: brightness(0) invert(1); /* turn icon white */
+}
+
+
+/* ---- MODAL BODY ---- */
+
+.modal-body {
+  padding-top: 25px;
+  background: #ffffff;
+}
+
+
+/* ---- STAT CARDS ---- */
+
+.stats-container {
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.stat {
+  text-align: center;
+  padding: 18px 24px;
+  width: 170px;
+
+  background: #f5ead7;
+  border-radius: 14px;
+
+
+  box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+}
+
+/* number (big, bold, colored) */
+.stat-number {
+  font-size: 46px;
+  font-weight: 800;
+  color: #0d2543
+}
+
+/* label under number */
+.stat-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #4a4a4a;
+  margin-top: 6px;
+}
+
+
+.guess-counter {
+    text-align: center;
+    padding: 18px 24px;
+    width: 130px;
+
+    position: absolute;
+    left: 15%;
+    top: 8.5rem;
+
+
+    background: #f5ead7;
+    border-radius: 14px;
+
+
+    box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.alert.hidden {
+    visibility: hidden;
+}
+
+.alert {
+    padding: 10px;
+    position: absolute;
+    left: 62%;
+    top: 47.8rem;
+    width: 12%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* ============================= */
+/* AUTH PAGE STYLES */
+/* ============================= */
+
+.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+}
+
+.auth-card {
+    background: #ffffff;
+    padding: 40px 45px;
+    width: 380px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.auth-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #0d2543;
+    margin-bottom: 30px;
+}
+
+/* Form layout */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.auth-field {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.auth-field label {
+    font-weight: bold;
+    color: #0d2543;
+    margin-bottom: 6px;
+}
+
+.auth-field input {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 2px solid #0d2543;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.auth-field input:focus {
+    outline: none;
+    border-color: #f0dcc1;
+    box-shadow: 0 0 0 2px rgba(13,37,67,0.15);
+}
+
+/* Primary login button */
+.auth-btn-primary {
+    background: #0d2543;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 14px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+}
+
+/* Divider */
+.auth-divider {
+    font-size: 14px;
+    font-weight: bold;
+    color: #4a4a4a;
+}
+
+/* Secondary signup button */
+.auth-btn-secondary {
+    display: block;
+    background: #f5ead7;
+    color: #0d2543;
+    padding: 12px;
+    border-radius: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid #0d2543;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+}
+
+.auth-alert {
+    background: #f0dcc1;
+    color: #0d2543;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    border: 2px solid #0d2543;
+}
+
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 3rem;
+    margin: 4rem auto;
+    max-width: 1100px;
+}
+
+/* ============================= */
+/* SIDE BENEFITS (AUTH PAGE) */
+/* ============================= */
+
+.benefit-side {
+    width: 220px;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Icon */
+.benefit-icon {
+    font-size: 125px;
+    margin-bottom: 15px;
+    color: #0d2543;
+}
+
+/* Title under icon */
+.benefit-side h4 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #0d2543;
+    margin-bottom: 6px;
+}
+
+/* Description text */
+.benefit-side p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #4a4a4a;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Responsive stacking */
+@media (max-width: 900px) {
+    .benefit-side {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+
+
+
+/* ============================= */
+/* STATS PAGE */
+/* ============================= */
+
+.stats-page {
+    max-width: 1100px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+}
+
+
+/* ===== SUMMARY HEADER ===== */
+
+.stats-summary {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.summary-card {
+    background: #f5ead7;
+    width: 200px;
+    padding: 25px 20px;
+    border-radius: 16px;
+    text-align: center;
+
+    box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.summary-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Big number */
+.summary-number {
+    font-size: 42px;
+    font-weight: 800;
+    color: #0d2543;
+}
+
+/* Label */
+.summary-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a4a4a;
+    margin-top: 6px;
+}
+
+
+
+/* ===== TABLE CONTAINER ===== */
+
+.playthrough-container {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 20px;
+
+    box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+}
+
+
+
+/* ===== TABLE STYLE ===== */
+
+.playthrough-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-weight: bold;
+    color: #0d2543;
+}
+
+.playthrough-table thead th {
+    background: #0d2543;
+    color: white;
+    padding: 14px;
+    font-size: 15px;
+}
+
+.playthrough-table tbody td {
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Row hover */
+.playthrough-table tbody tr:hover {
+    background: #f5ead7;
+}
+
+
+/* ===== RESULT COLORS ===== */
+
+.win {
+    color: green;
+    font-weight: bold;
+}
+
+.loss {
+    color: red;
+    font-weight: bold;
+}
+
+
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+
+    .summary-card {
+        width: 150px;
+        padding: 18px;
+    }
+
+    .summary-number {
+        font-size: 32px;
+    }
+
+    .playthrough-table thead {
+        display: none;
+    }
+
+    .playthrough-table tr {
+        display: block;
+        margin-bottom: 1rem;
+        background: #f5ead7;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    .playthrough-table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px;
+        border: none;
+    }
+}
+
+
+.archive-page {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.archive-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #0d2543;
+    margin-bottom: .5rem;
+}
+.archive-caption {
+    font-size: 18px;
+    font-weight: 500;
+    font-style: italic;
+    color: black;
+    margin-bottom: 2rem;
+
+}
+
+/* stack rows vertically */
+.archive-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* each row has 2 buttons */
+.archive-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+/* button base */
+.archive-button {
+    width: 280px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #0d2543;
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 14px;
+
+    font-weight: 800;
+    font-size: 20px;
+
+    box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* alternate style for right side */
+.archive-button.secondary {
+    background: #f5ead7;
+    color: #0d2543;
+    border: 2px solid #0d2543;
+}
+
+/* hover effect */
+.archive-button:hover {
+    transform: translateY(-4px);
+}
+
+/* mobile stacking */
+@media (max-width: 700px) {
+    .archive-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .archive-button {
+        width: 90%;
+    }
+}

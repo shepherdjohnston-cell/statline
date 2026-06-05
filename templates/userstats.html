@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <div class="stats-page">
+
+        <!-- ===== HEADER STATS (AVERAGES) ===== -->
+        <div class="stats-summary">
+
+            <div class="summary-card">
+                <div class="summary-number">{{ avg_guesses }}</div>
+                <div class="summary-label">Avg Guesses</div>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-number">{{ avg_hints }}</div>
+                <div class="summary-label">Avg Hints</div>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-number">{{ win_per }}%</div>
+                <div class="summary-label">Win %</div>
+            </div>
+
+        </div>
+
+
+        <!-- ===== PLAYTHROUGH TABLE ===== -->
+        <div class="playthrough-container">
+
+            <table class="playthrough-table">
+
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Guesses</th>
+                        <th>Hints Used</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% if stats %}
+                        {% for game in stats %}
+                        <tr>
+                            <td>{{ game.statline_id }}</td>
+                            <td>{{ game.guesses }}</td>
+                            <td>{{ game.hints }}</td>
+                            <td>
+                                {% if game.game_won %}
+                                    <span class="win">Win</span>
+                                {% else %}
+                                    <span class="loss">Loss</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+{% endblock %}
